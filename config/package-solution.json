@@ -1,0 +1,40 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "wasteland-warefare-client-side-solution",
+    "id": "0d6002e8-074d-4a22-8c22-806f2ebbe13f",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.18.2"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "wasteland-warefare description"
+      },
+      "longDescription": {
+        "default": "wasteland-warefare description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "wasteland-warefare Feature",
+        "description": "The feature that activates elements of the wasteland-warefare solution.",
+        "id": "d533d22e-f382-459f-85c1-91c8b82072e0",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/wasteland-warefare.sppkg"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "plusBeta": false,
+    "isCreatingSolution": true,
+    "nodeVersion": "18.19.0",
+    "sdksVersions": {
+      "@microsoft/microsoft-graph-client": "3.0.2",
+      "@microsoft/teams-js": "2.12.0"
+    },
+    "version": "1.18.2",
+    "libraryName": "wasteland-warefare",
+    "libraryId": "0d6002e8-074d-4a22-8c22-806f2ebbe13f",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionName": "wasteland-warefare",
+    "solutionShortDescription": "wasteland-warefare description",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "componentType": "webpart"
+  }
+}
