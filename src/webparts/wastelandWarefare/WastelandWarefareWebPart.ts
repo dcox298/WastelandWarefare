@@ -11,6 +11,7 @@ import { IReadonlyTheme } from '@microsoft/sp-component-base';
 import * as strings from 'WastelandWarefareWebPartStrings';
 import WastelandWarefare from './components/WastelandWarefare';
 import { IWastelandWarefareProps } from './components/IWastelandWarefareProps';
+import { getSP } from './pnpjsConfig';
 
 export interface IWastelandWarefareWebPartProps {
   description: string;
@@ -36,11 +37,18 @@ export default class WastelandWarefareWebPart extends BaseClientSideWebPart<IWas
     ReactDom.render(element, this.domElement);
   }
 
-  protected onInit(): Promise<void> {
-    return this._getEnvironmentMessage().then(message => {
-      this._environmentMessage = message;
-    });
-  }
+/**
+* Initialize the web part.
+*/
+public async onInit(): Promise<void> {
+  this._environmentMessage = await this._getEnvironmentMessage();
+
+  await super.onInit();
+
+  //Initialize our _sp object that we can then use in other packages without having to pass around the context.
+  // Check out pnpjsConfig.ts for an example of a project setup file.
+  getSP(this.context);
+}
 
 
 
