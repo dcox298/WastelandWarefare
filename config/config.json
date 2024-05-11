@@ -13,6 +13,7 @@
   },
   "externals": {},
   "localizedResources": {
-    "WastelandWarefareWebPartStrings": "lib/webparts/wastelandWarefare/loc/{locale}.js"
+    "WastelandWarefareWebPartStrings": "lib/webparts/wastelandWarefare/loc/{locale}.js",
+    "ControlStrings": "node_modules/@pnp/spfx-controls-react/lib/loc/{locale}.js"
   }
 }

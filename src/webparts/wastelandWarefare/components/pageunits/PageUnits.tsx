@@ -4,6 +4,7 @@ import { IPageUnitsProps } from "./IPageUnitsProps";
 import { IPageUnitsState } from "./IPageUnitsState";
 import { SPFI } from "@pnp/sp";
 import { getSP } from "../../pnpjsConfig";
+import { ListView } from "@pnp/spfx-controls-react";
 
 
 
@@ -21,7 +22,9 @@ export default class PageUnits extends React.Component<IPageUnitsProps, IPageUni
     public async componentDidMount(): Promise<void> {
        
         const results: any[] = await this._sp.web.lists.getByTitle('Units').items();
-        
+
+        const view: any = await this._sp.web.lists.getByTitle('Units')(); 
+        console.log(view);
         this.setState({items:results})
       }
 
@@ -30,7 +33,10 @@ export default class PageUnits extends React.Component<IPageUnitsProps, IPageUni
         return(
             <Stack>
                 <Stack.Item>
-                    {JSON.stringify(this.state.items)}
+                    <ListView 
+                        items={this.state.items}
+                        
+                    />
                 </Stack.Item>
             </Stack>
             
