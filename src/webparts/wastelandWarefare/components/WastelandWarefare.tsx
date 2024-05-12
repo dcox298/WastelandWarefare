@@ -15,6 +15,7 @@ export default class WastelandWarefare extends React.Component<IWastelandWarefar
       // environmentMessage,
       hasTeamsContext,
      // userDisplayName
+     webpartcontext
     } = this.props;
 
     return (
@@ -22,7 +23,7 @@ export default class WastelandWarefare extends React.Component<IWastelandWarefar
        <HashRouter>
         <Routes>
           <Route path="/" element={<MasterPage  page={<PageHome pageTitle='Home' />} />} />
-          <Route path="/Units" element={<MasterPage page={<PageUnits pageTitle='Units'/>} />} />
+          <Route path="/Units" element={<MasterPage page={<PageUnits webpartcontext={webpartcontext} pageTitle='Units'/>} />} />
         </Routes>
        </HashRouter>
       </section>
