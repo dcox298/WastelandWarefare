@@ -23,7 +23,7 @@ export default class WastelandWarefare extends React.Component<IWastelandWarefar
        <HashRouter>
         <Routes>
           <Route path="/" element={<MasterPage  page={<PageHome pageTitle='Home' />} />} />
-          <Route path="/Units" element={<MasterPage page={<PageUnits webpartcontext={webpartcontext} pageTitle='Units'/>} />} />
+          <Route path="/Units" element={<MasterPage page={<PageUnits webpartcontext={webpartcontext} pageTitle='Factions' listGUID='dca4c4cc-1913-4ef0-8baf-05461357eaea'/>} />} />
         </Routes>
        </HashRouter>
       </section>
