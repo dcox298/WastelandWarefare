@@ -40,12 +40,14 @@ export default class WWList extends React.Component<IWWListProps, IWWListState>{
         super(props);
         this.state = {
             items:[],
+            selectedViewGuid:'',
             isPanelOpen:false,
         }   
         this._sp = getSP();
         this._getSelection = this._getSelection.bind(this)
         this.openPanel = this.openPanel.bind(this);
         this.dismissPanel = this.dismissPanel.bind(this);
+        this._refreshItems = this._refreshItems.bind(this);
     }
     public openPanel(itemId:number){
         this.setState({
@@ -123,6 +125,14 @@ export default class WWList extends React.Component<IWWListProps, IWWListState>{
         console.log('Selected items:', items);
         this.openPanel(items[0].Id);       
     }
+    private async _refreshItems():Promise<void>{
+        const list = this._sp.web.lists.getById(this.props.listGUID);
+        const viewDetails = await list.views.getById(this.state.selectedViewGuid||'')();
+        const items = await this._sp.web.lists.getById(this.props.listGUID).getItemsByCAMLQuery({ViewXml:viewDetails.ListViewXml});
+        this.setState({
+            items
+        });
+    }
     public render(): React.ReactElement<IWWListProps> {
 
         return(
@@ -142,7 +152,7 @@ export default class WWList extends React.Component<IWWListProps, IWWListState>{
                             onCancelled={() => { console.log('Cancelled');this.dismissPanel() }}
                             onBeforeSubmit={async (listItem) => { return false; }}
                             onSubmitError={(listItem, error) => { alert(error.message); }}
-                            onSubmitted={async (listItemData) => { console.log(listItemData);this.dismissPanel()/* refreshdata next*/ }}>
+                            onSubmitted={async (listItemData) => { console.log(listItemData);this._refreshItems();this.dismissPanel() }}>
                     </DynamicForm>
                 </Panel>
                 <Stack>
