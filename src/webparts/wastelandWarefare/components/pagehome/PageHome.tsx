@@ -23,6 +23,8 @@ export default class PageHome extends React.Component<IPageHomeProps, IPageHomeS
             <Stack>
                 <Stack.Item>
                     <CompoundButton text="Units" onClick={()=>{window.location.hash="#/Units"}} />
+                    <CompoundButton text="UnitCard" onClick={()=>{window.location.hash="#/UnitCard"}} />
+
                 </Stack.Item>
                 <Stack.Item>
                     <WWList webpartcontext={this.props.webpartcontext} listGUID="dca4c4cc-1913-4ef0-8baf-05461357eaea"/>
