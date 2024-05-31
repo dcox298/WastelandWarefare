@@ -1,10 +1,14 @@
 import * as React from "react";
 import { IUnitCard } from "../../viewmodels/IUnitCard";
-import { DefaultPalette, IStackItemStyles, IStackStyles, Label, Spinner, Stack,  } from "@fluentui/react";
+import { DefaultPalette, IStackItemStyles, IStackStyles, Spinner, Stack,  } from "@fluentui/react";
 import { getSP } from "../../pnpjsConfig";
 import { SPFI } from "@pnp/sp";
 import { IUnit } from "../../ContentTypes/IUnit";
 import UnitService from "../../services/UnitService";
+import AttributeSpinButton from "./AttributeSpinButton";
+import MovementIcon from "../Icons/MovementIcon";
+import ChargeIcon from "../Icons/ChargeIcon";
+import AttributeSkills from "./AttributeSkills";
 
 
 interface IUnitCardProps{
@@ -71,52 +75,104 @@ export default class UnitCard extends React.Component<IUnitCardProps, IUnitCardS
                     <Stack wrap={false} styles={outerUnitCardStackStyles}>
                         <Stack.Item align='center' styles={outerUnitCardStackItemStyles}> 
                             <Stack>
-                                <Stack.Item>
+
+                                {/* title */}
+                                <Stack.Item align="center">
                                     {this.state.Unit?.Title}
                                 </Stack.Item>
-                                <Stack.Item>
+                                <Stack.Item align="center">
                                     {this.state.Unit?.Faction?.Title}
                                 </Stack.Item>
-                                <Stack.Item>
+                                {/* title */}
+
+                                {/* movement */}
+                                <Stack.Item align="start">
                                     <Stack horizontal>
-                                        <Stack.Item>{this.state.Unit?.MoveDistance}</Stack.Item><Stack.Item>{this.state.Unit?.ChargeDistance}</Stack.Item>
+                                        <Stack.Item><MovementIcon movementColor={this.state.Unit?.MoveDistance}/></Stack.Item><Stack.Item><ChargeIcon ChargeColor={this.state.Unit?.ChargeDistance}/></Stack.Item>
                                     </Stack>
                                 </Stack.Item>
+                                 {/* movement */}
+
+                                {/* big row */}
                                 <Stack.Item>
-                                    <Stack horizontal>
-                                        <Stack.Item><Label>STR</Label></Stack.Item><Stack.Item>{this.state.Unit?.STR}</Stack.Item>
+                                    <Stack horizontal >
+                                        {/* iMAGE */}
+                                        <Stack.Item>
+                                            <div style={{minWidth:175,minHeight:300,backgroundColor:'red'}}>dfgsdgf</div>
+                                        </Stack.Item>
+                                        {/* iMAGE */}
+
+                                        {/* Stats */}
+                                        <Stack.Item>
+                                            <Stack>
+                                                <Stack.Item align="end">
+                                                    <Stack horizontal>
+                                                        <Stack.Item><AttributeSkills/></Stack.Item>
+                                                        <Stack.Item><AttributeSpinButton label="STR" defaultValue={this.state.Unit?.STR.toString()}/></Stack.Item>
+                                                    </Stack>
+                                                </Stack.Item>
+                                                <Stack.Item align="end">
+                                                    <Stack horizontal>
+                                                        <Stack.Item><AttributeSkills/></Stack.Item>
+                                                            <Stack.Item><AttributeSpinButton label="PER" defaultValue={this.state.Unit?.PER.toString()}/></Stack.Item>
+                                                    </Stack>
+                                                </Stack.Item>
+                                                <Stack.Item align="end">
+                                                    <Stack horizontal>
+                                                        <Stack.Item><AttributeSkills/></Stack.Item>
+                                                        <Stack.Item><AttributeSpinButton label="END" defaultValue={this.state.Unit?.END.toString()}/></Stack.Item>
+                                                    </Stack>
+                                                </Stack.Item>
+                                                <Stack.Item align="end">
+                                                    <Stack horizontal>
+                                                        <Stack.Item><AttributeSkills/></Stack.Item>
+                                                        <Stack.Item><AttributeSpinButton label="CHA" defaultValue={this.state.Unit?.CHA.toString()}/></Stack.Item>
+                                                    </Stack>
+                                                </Stack.Item>
+                                                <Stack.Item align="end">
+                                                    <Stack horizontal>
+                                                        <Stack.Item><AttributeSkills/></Stack.Item>
+                                                        <Stack.Item><AttributeSpinButton label="INT" defaultValue={this.state.Unit?.INT.toString()}/></Stack.Item>
+                                                    </Stack>
+                                                </Stack.Item>
+                                                <Stack.Item align="end">
+                                                    <Stack horizontal>
+                                                        <Stack.Item><AttributeSkills/></Stack.Item>
+                                                        <Stack.Item><AttributeSpinButton label="AGI" defaultValue={this.state.Unit?.AGI.toString()}/></Stack.Item>
+                                                    </Stack>
+                                                </Stack.Item>
+                                                <Stack.Item align="end">
+                                                    <Stack horizontal>
+                                                        <Stack.Item><AttributeSkills/></Stack.Item>
+                                                        <Stack.Item><AttributeSpinButton label="LUC" defaultValue={this.state.Unit?.LUC.toString()}/></Stack.Item>
+                                                    </Stack>
+                                                </Stack.Item>
+                                            </Stack>
+                                        </Stack.Item>       
+                                        {/* Stats */}
                                     </Stack>
                                 </Stack.Item>
+
+                                {/* big row */}
+
+                                {/* TEXT AND ARMOR ROW */}
+                                <Stack.Item>
+
+                                </Stack.Item>
+                                {/* TEXT AND ARMOR ROW */}
+                                    <Stack horizontal>
+                                        <Stack.Item><div style={{minWidth:400,minHeight:200,backgroundColor:'yellow'}}>dfgsdgf</div></Stack.Item>
+                                        <Stack.Item><div style={{minWidth:100,minHeight:200,backgroundColor:'blue'}}>dfgsdgf</div></Stack.Item>
+                                    </Stack>
+                                {/* fOOTER ROW */}
                                 <Stack.Item>
                                     <Stack horizontal>
-                                        <Stack.Item><Label>PER</Label></Stack.Item><Stack.Item>{this.state.Unit?.PER}</Stack.Item>
+                                        <Stack.Item><div style={{minWidth:400,minHeight:50,backgroundColor:'green'}}>dfgsdgf</div></Stack.Item>
+                                        <Stack.Item><div style={{minWidth:100,minHeight:50,backgroundColor:'purple'}}>dfgsdgf</div></Stack.Item>
                                     </Stack>
-                                </Stack.Item>
-                                <Stack.Item>
-                                    <Stack horizontal>
-                                        <Stack.Item><Label>END</Label></Stack.Item><Stack.Item>{this.state.Unit?.END}</Stack.Item>
-                                    </Stack>
-                                </Stack.Item>
-                                <Stack.Item>
-                                    <Stack horizontal>
-                                        <Stack.Item><Label>CHA</Label></Stack.Item><Stack.Item>{this.state.Unit?.CHA}</Stack.Item>
-                                    </Stack>
-                                </Stack.Item>
-                                <Stack.Item>
-                                    <Stack horizontal>
-                                        <Stack.Item><Label>INT</Label></Stack.Item><Stack.Item>{this.state.Unit?.INT}</Stack.Item>
-                                    </Stack>
-                                </Stack.Item>
-                                <Stack.Item>
-                                    <Stack horizontal>
-                                        <Stack.Item><Label>AGI</Label></Stack.Item><Stack.Item>{this.state.Unit?.AGI}</Stack.Item>
-                                    </Stack>
-                                </Stack.Item>
-                                <Stack.Item>
-                                    <Stack horizontal>
-                                        <Stack.Item><Label>LUC</Label></Stack.Item><Stack.Item>{this.state.Unit?.LUC}</Stack.Item>
-                                    </Stack>
-                                </Stack.Item>
+                                    </Stack.Item>
+                                {/* fOOTER ROW */}
+
                             </Stack>
                         </Stack.Item>
                     </Stack>
