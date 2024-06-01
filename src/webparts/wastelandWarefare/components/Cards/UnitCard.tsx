@@ -11,6 +11,7 @@ import ChargeIcon from "../Icons/ChargeIcon";
 import AttributeSkills from "./AttributeSkills";
 import ArmorStats from "./ArmorStats";
 import FeatureDescriptions from "./FeatureDescriptions";
+import PassiveSkills from "./PassiveSkills";
 
 
 interface IUnitCardProps{
@@ -79,12 +80,27 @@ export default class UnitCard extends React.Component<IUnitCardProps, IUnitCardS
                             <Stack>
 
                                 {/* title */}
-                                <Stack.Item align="center">
-                                    {this.state.Unit?.Title}
+                                <Stack.Item>
+                                    <Stack horizontal>
+                                        <Stack.Item>
+                                            <div style={{minWidth:50,minHeight:50,backgroundColor:'grey'}}>dfgsdgf</div>
+                                        </Stack.Item>
+                                        <Stack.Item grow>
+                                            <Stack>
+                                                <Stack.Item align="center">
+                                                    {this.state.Unit?.Title}
+                                                </Stack.Item>
+                                                <Stack.Item align="center">
+                                                    {this.state.Unit?.Faction?.Title}
+                                                </Stack.Item>
+                                            </Stack>
+                                        </Stack.Item>
+                                        <Stack.Item>
+                                          <div style={{minWidth:50,minHeight:50,backgroundColor:'grey'}}>dfgsdgf</div>
+                                        </Stack.Item>
+                                    </Stack>
                                 </Stack.Item>
-                                <Stack.Item align="center">
-                                    {this.state.Unit?.Faction?.Title}
-                                </Stack.Item>
+                                
                                 {/* title */}
 
                                 {/* movement */}
@@ -105,7 +121,7 @@ export default class UnitCard extends React.Component<IUnitCardProps, IUnitCardS
                                         {/* iMAGE */}
 
                                         {/* Stats */}
-                                        <Stack.Item>
+                                        <Stack.Item grow align="end">
                                             <Stack>
                                                 <Stack.Item align="end">
                                                     <Stack horizontal>
@@ -163,14 +179,13 @@ export default class UnitCard extends React.Component<IUnitCardProps, IUnitCardS
                                 </Stack.Item>
                                 {/* TEXT AND ARMOR ROW */}
                                     <Stack horizontal>
-                                        <Stack.Item><FeatureDescriptions /></Stack.Item>
+                                        <Stack.Item grow><FeatureDescriptions /></Stack.Item>
                                         <Stack.Item><ArmorStats /></Stack.Item>
                                     </Stack>
                                 {/* fOOTER ROW */}
                                 <Stack.Item>
                                     <Stack horizontal>
-                                        <Stack.Item><div style={{minWidth:400,minHeight:50,backgroundColor:'green'}}>dfgsdgf</div></Stack.Item>
-                                        <Stack.Item><div style={{minWidth:100,minHeight:50,backgroundColor:'purple'}}>dfgsdgf</div></Stack.Item>
+                                        <Stack.Item grow><PassiveSkills /></Stack.Item>
                                     </Stack>
                                     </Stack.Item>
                                 {/* fOOTER ROW */}
