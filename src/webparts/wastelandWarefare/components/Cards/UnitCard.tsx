@@ -9,6 +9,8 @@ import AttributeSpinButton from "./AttributeSpinButton";
 import MovementIcon from "../Icons/MovementIcon";
 import ChargeIcon from "../Icons/ChargeIcon";
 import AttributeSkills from "./AttributeSkills";
+import ArmorStats from "./ArmorStats";
+import FeatureDescriptions from "./FeatureDescriptions";
 
 
 interface IUnitCardProps{
@@ -161,8 +163,8 @@ export default class UnitCard extends React.Component<IUnitCardProps, IUnitCardS
                                 </Stack.Item>
                                 {/* TEXT AND ARMOR ROW */}
                                     <Stack horizontal>
-                                        <Stack.Item><div style={{minWidth:400,minHeight:200,backgroundColor:'yellow'}}>dfgsdgf</div></Stack.Item>
-                                        <Stack.Item><div style={{minWidth:100,minHeight:200,backgroundColor:'blue'}}>dfgsdgf</div></Stack.Item>
+                                        <Stack.Item><FeatureDescriptions /></Stack.Item>
+                                        <Stack.Item><ArmorStats /></Stack.Item>
                                     </Stack>
                                 {/* fOOTER ROW */}
                                 <Stack.Item>
