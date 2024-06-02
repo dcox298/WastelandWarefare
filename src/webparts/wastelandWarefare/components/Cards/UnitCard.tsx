@@ -185,6 +185,7 @@ export default class UnitCard extends React.Component<IUnitCardProps, IUnitCardS
                                 {/* fOOTER ROW */}
                                 <Stack.Item>
                                     <Stack horizontal>
+
                                         <Stack.Item grow><PassiveSkills /></Stack.Item>
                                     </Stack>
                                     </Stack.Item>
