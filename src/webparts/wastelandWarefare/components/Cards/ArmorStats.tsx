@@ -3,7 +3,9 @@ import * as React from "react";
 import ArmorSpinButton from "./ArmorSpinButton";
 
 export interface IArmorStatsProps {
-
+    physical?:number;
+    energy?:number;
+    radiation?:number;
 }
 export interface IArmorStatsState {
     
@@ -36,9 +38,9 @@ export default class ArmorStats extends React.Component<IArmorStatsProps, IArmor
         return(
             <>
                 <Stack styles={stackStyles} tokens={containerStackTokens}>
-                    <Stack.Item styles={stackItemStyles}><ArmorSpinButton armorType=""/></Stack.Item>
-                    <Stack.Item styles={stackItemStyles}><ArmorSpinButton armorType=""/></Stack.Item>
-                    <Stack.Item styles={stackItemStyles}><ArmorSpinButton armorType=""/></Stack.Item>
+                    <Stack.Item styles={stackItemStyles}><ArmorSpinButton armorType="Physical" armorValue={this.props.physical?.toString()||''}/></Stack.Item>
+                    <Stack.Item styles={stackItemStyles}><ArmorSpinButton armorType="Energy" armorValue={this.props.energy?.toString()||''}/></Stack.Item>
+                    <Stack.Item styles={stackItemStyles}><ArmorSpinButton armorType="Radiation" armorValue={this.props.radiation?.toString()||''}/></Stack.Item>
                 </Stack>
             </>
         );

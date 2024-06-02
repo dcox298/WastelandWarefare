@@ -4,6 +4,7 @@ import * as React from "react";
 
 interface IArmorSpinButtonProps extends ISpinButtonProps{
     armorType:string;
+    armorValue:string;
 }
 interface IArmorSpinButtonState{
 
@@ -24,19 +25,19 @@ export default class ArmorSpinButton extends React.Component<IArmorSpinButtonPro
         this.state = {
 
         }   
-        this.buttonIcon ='Shield';
-        // switch(props.armorType){
-        //     case 'Physical':
-        //         icon='Shield';
-        //         break;
-        //     case 'Electrical':
-        //         icon='LightningBolt';
-        //         break;
-        //     case 'Readiation':
-        //         icon='Sunny';
-        //         break;
-        //     default:icon='';
-        // }
+        this.buttonIcon ='';
+        switch(props.armorType){
+            case 'Physical':
+                this.buttonIcon='Shield';
+                break;
+            case 'Energy':
+                this.buttonIcon='LightningBolt';
+                break;
+            case 'Radiation':
+                this.buttonIcon='Sunny';
+                break;
+            default:this.buttonIcon='';
+        }
         //this._sp = getSP();
         this._method = this._method.bind(this)
     }
@@ -56,7 +57,7 @@ export default class ArmorSpinButton extends React.Component<IArmorSpinButtonPro
         
         return(
             <>
-                <SpinButton iconProps={{iconName:this.buttonIcon}} styles={styles} min={0} max={6} disabled={true} defaultValue={this.props.defaultValue}/>
+                <SpinButton iconProps={{iconName:this.buttonIcon}} styles={styles} min={0} max={6} disabled={true} defaultValue={this.props.armorValue}/>
             </>
         );
     }

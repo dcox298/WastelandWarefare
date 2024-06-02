@@ -1,14 +1,34 @@
 export interface IUnit {
     Title:string;
     Faction?:any;
-    FactionId:number
-    STR:number;
-    PER:number;
-    END:number;
-    CHA:number;
-    INT:number;
-    AGI:number;
-    LUC:number;
+    FactionId:number;
+    UniqueUnit:boolean;
     MoveDistance:string;
     ChargeDistance:string;
+    STR:number;
+    STR_Skills?:any[];
+    STR_SkillsId:number[];
+    PER:number;
+    PER_Skills?:any[];
+    PER_SkillsId:number[];
+    END:number;
+    END_Skills?:any[];
+    END_SkillsId:number[];
+    CHA:number;
+    CHA_Skills?:any[];
+    CHA_SkillsId:number[];
+    INT:number;
+    INT_Skills?:any[];
+    INT_SkillsId:number[];
+    AGI:number;
+    AGI_Skills?:any[];
+    AGI_SkillsId:number[];
+    LUC:number;
+    LUC_Skills?:any[];
+    LUC_SkillsId:number[];
+    ArmorPhysical:number;
+    ArmorEnergy:number;
+    ArmorRadiation:number;
+    UnitFeatures?:any[];
+    UnitFeaturesId:number[];
 }
