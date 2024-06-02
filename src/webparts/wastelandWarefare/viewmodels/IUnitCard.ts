@@ -13,4 +13,7 @@ export interface IUnitCard {
     LUC:number;
     MoveDistance:string;
     ChargeDistance:string;
+    ArmorPhysical:number;
+    ArmorEnergy:number;
+    ArmorRadiation:number;
 }
