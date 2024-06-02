@@ -169,8 +169,8 @@ export default class UnitCard extends React.Component<IUnitCardProps, IUnitCardS
                                 {/* fOOTER ROW */}
                                 <Stack.Item>
                                     <Stack horizontal>
-                                        <Stack.Item><div style={{minWidth:400,minHeight:50,backgroundColor:'green'}}>dfgsdgf</div></Stack.Item>
-                                        <Stack.Item><div style={{minWidth:100,minHeight:50,backgroundColor:'purple'}}>dfgsdgf</div></Stack.Item>
+                                        <Stack.Item><div style={{minWidth:50,minHeight:50,backgroundColor:'green'}}>awarnessIcon</div></Stack.Item>
+                                        <Stack.Item><div style={{minWidth:300,minHeight:50,backgroundColor:'purple'}}>quickActions</div></Stack.Item>
                                     </Stack>
                                     </Stack.Item>
                                 {/* fOOTER ROW */}
