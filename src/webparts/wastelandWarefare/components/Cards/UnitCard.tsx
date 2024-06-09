@@ -179,7 +179,7 @@ export default class UnitCard extends React.Component<IUnitCardProps, IUnitCardS
                                 </Stack.Item>
                                 {/* TEXT AND ARMOR ROW */}
                                     <Stack horizontal>
-                                        <Stack.Item grow><FeatureDescriptions /></Stack.Item>
+                                        <Stack.Item grow><FeatureDescriptions features={this.state.Unit?.UnitFeaturesId}/></Stack.Item>
                                         <Stack.Item><ArmorStats physical={this.state.Unit?.ArmorPhysical} energy={this.state.Unit?.ArmorEnergy} radiation={this.state.Unit?.ArmorRadiation}/></Stack.Item>
                                     </Stack>
                                 {/* fOOTER ROW */}

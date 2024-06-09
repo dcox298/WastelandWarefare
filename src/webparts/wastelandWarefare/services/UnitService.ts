@@ -21,7 +21,8 @@ export default class UnitService {
             ChargeDistance: SPItem.ChargeDistance,
             ArmorPhysical: SPItem.ArmorPhysical || 0,
             ArmorEnergy: SPItem.ArmorEnergy || 0,
-            ArmorRadiation: SPItem.ArmorRadiation || 0
+            ArmorRadiation: SPItem.ArmorRadiation || 0,
+            UnitFeaturesId:SPItem.UnitFeaturesId  
         }
         return unitCard
     }

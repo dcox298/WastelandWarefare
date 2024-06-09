@@ -1,12 +1,16 @@
-import { DefaultPalette, IStackItemStyles, IStackStyles, IStackTokens, Stack } from "@fluentui/react";
+import { DefaultPalette, IStackItemStyles, IStackStyles, IStackTokens, ITextStyles, Stack, Text } from "@fluentui/react";
 import * as React from "react";
+import { IFeature } from "../../ContentTypes/IFeature";
+import { getSP } from "../../pnpjsConfig";
+import { SPFI } from "@pnp/sp";
 
 
 export interface IFeatureDescriptionsProps {
+    features?:number[];
 
 }
 export interface IFeatureDescriptionsState {
-    
+    features:IFeature[];
 }
 //Stack Styles
 const stackStyles: IStackStyles = {
@@ -25,10 +29,44 @@ const stackItemStyles: IStackItemStyles = {
 // Tokens definition
 const containerStackTokens: IStackTokens = { childrenGap: 5 };
 
+const titleStyles:ITextStyles={
+    root:{
+        fontWeight:500
+    }
+}
+const descriptionStyles:ITextStyles={
+    root:{
+
+    }
+}
+
+
 export default class FeatureDescriptions extends React.Component<IFeatureDescriptionsProps, IFeatureDescriptionsState>{ 
+    private _sp: SPFI;
 
     constructor(props:IFeatureDescriptionsProps){
-        super(props);      
+        super(props);  
+        this.state={
+            features:[{Title:'Loading...'}]
+        }    
+        this._sp = getSP();
+    }
+    public async componentDidMount(): Promise<void> {
+        const list = this._sp.web.lists.getByTitle('Features');
+        let filter:string='Id eq ';
+        this.props.features?.forEach((id,i)=>{
+            if(i===0){
+                filter+=id;
+            }else{
+                filter+=' or Id eq '+id;
+            }
+        })
+        // const features:IFeature = await list.items.getById(this.props.features?this.props.features[0]:1)();
+        const features:IFeature[] = await list.items.filter(filter)();
+        this.setState({
+            features:features
+        })
+
     }
 
     public render(): React.ReactElement<IFeatureDescriptionsProps> {
@@ -36,9 +74,13 @@ export default class FeatureDescriptions extends React.Component<IFeatureDescrip
         return(
             <>
                 <Stack styles={stackStyles} tokens={containerStackTokens}>
-                    <Stack.Item styles={stackItemStyles}><div style={{minWidth:400,minHeight:100,backgroundColor:'yellow'}}>dfgsdgf</div></Stack.Item>
-                    <Stack.Item styles={stackItemStyles}><div style={{minWidth:400,minHeight:100,backgroundColor:'green'}}>dfgsdgf</div></Stack.Item>
-                    <Stack.Item styles={stackItemStyles}><div style={{minWidth:400,minHeight:100,backgroundColor:'orange'}}>dfgsdgf</div></Stack.Item>
+                    {this.state.features?.map((value:IFeature)=>{
+                        return(
+                            <Stack.Item styles={stackItemStyles}>
+                                <Text styles={titleStyles} variant="smallPlus">{value.Title}</Text><Text styles={descriptionStyles} variant="small">{value.FeatureDescription}</Text>
+                            </Stack.Item>
+                        )
+                    })}
                 </Stack>
             </>
         );

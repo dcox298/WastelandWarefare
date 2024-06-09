@@ -1,5 +1,6 @@
 import { IFaction } from "../ContentTypes/IFaction";
 
+
 export interface IUnitCard {
     Title:string;
     Faction?:IFaction;
@@ -16,4 +17,5 @@ export interface IUnitCard {
     ArmorPhysical:number;
     ArmorEnergy:number;
     ArmorRadiation:number;
+    UnitFeaturesId:number[];
 }
